@@ -1,0 +1,3 @@
+.btnbtn{width: auto;height: auto;background-color:#ffffff;border:5px solid #f3de00;}
+.btnbtn:hover{background-color:#ffffff;color:#000000;}
+.active{background-color:#ffffff;border:5px solid #f3de00;}

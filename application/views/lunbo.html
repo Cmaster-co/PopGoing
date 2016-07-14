@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Racket_ART</title>
+    <link href="css/animation.css" rel="stylesheet" media="screen" type="text/css"><!--连接到animation.css，为图标第3行的css样式-->
+    <style type="text/css">
+        *{
+            margin:0px 0px 0px 0px;
+            font-family:"黑体";
+        }
+        body {
+            margin:0px 0px 0px 0px;
+            background-color:#FFF;
+            background-image: url(images/bg_header.png);
+            background-repeat:no-repeat;
+            color: #303030;
+            font-size: 18px;
+        }
+        /*头部和导航*/
+        #header{
+            float:left;
+            left:0px;
+            top:0px;
+            right:0px;
+            height:110px;
+            width:1200px;
+            position:absolute;
+        }
+        #header_left{
+            margin:40px 5px 0px 10px;
+            height:50px;
+            width:35px;
+            float:left;
+            display:block;
+        }
+        #header_ziti1{
+            margin:50px 400px 0px 0px;
+            width:40px;
+            height:30px;
+            float:left;
+            font-size:14px;
+            color:#718E99;
+            font-family:"黑体";
+            display:block;
+        }
+        #header_center{
+            margin:35px 40px 0px 0px;
+            height:50px;
+            width:400px;
+            float:left;
+            font-size:20px;
+            color:#999;
+            font-family:"Courier New", Courier, monospace;
+        }
+        #header_ziti2{
+            margin:50px 0px 0px -20px;
+            width:30px;
+            height:50px;
+            float:left;
+            font-size:12px;
+            color:#718E99;
+        }
+        #header_right{
+            margin:30px 0px 0px 20px;
+            height:80px;
+            width:220px;
+            float:right;
+        }
+        a{
+            text-decoration:none;
+            display:block;//块状显示
+        font-size:18px;
+            color:#999;
+        }
+        #nav_ul{
+            margin:5px 0px 0px 0px;
+            width:1270px;
+            height:47px;
+            background-image:url(images/bg_header_daohang.png);
+            list-style:none;
+            float:left;
+        }
+        #nav_ul li{
+            margin:6px 0px 0px 0px;
+            width:100px;
+            left:300px;
+            float:left;
+            position:relative;
+        }
+        #close{
+            margin:0px 0px 0px 100px;
+            right:0px;
+        }
+        p{
+            color:#666;
+            font-family:"Courier New", Courier, monospace;
+        }
+        /*底部*/
+        #bottom{
+            margin:150px 0px 0px 0px;
+            position:absolute;
+        }
+        /*#art_content_top{
+            background-image:url(bg_art_content_top.jpg);
+            height:300px;
+            width:1265px;
+            margin:118px 0px 0px 0px;
+        }*/
+        /*图片切换*/
+        #outer{
+            margin:200px 0px 0px 50px;
+            width: 1100px;
+            text-align: left;
+        }
+        #focus{
+            padding:15px 0px 0px 0px;
+            height: 400px;
+            width:50px;
+            float:left;
+        }
+        #beni{
+            width: 50px;
+            list-style-type: none;
+            color:#333;
+            font-family::Tahoma, Geneva, sans-serif;
+        }
+        #beni li{
+            border-top: #fff 1px solid;
+            font-size: 17px;
+            float: right;
+            width: 50px;//左侧div宽度
+        text-indent: 24px;
+            line-height: 125px;
+        }
+        #first{
+            background-color:#eee;
+        }
+        #second{
+            background-color:#e1e1e1;
+        }
+        #thirs{
+            background-color:#373737;
+        }
+        #forth{
+            background-color:#000;
+        }
+        #beni li a{
+            border-right: 0px;
+            padding-right: 0px;
+            border-top: 0px;
+            display: block;
+            padding-left: 0px;
+            font-weight: bold;
+            padding-bottom: 0px;
+            margin: 0px;
+            border-left: 0px;
+            padding-top: 0px;
+            border-bottom: 0px;
+            text-decoration: none;
+            color:#333;
+        }
+        #beni li a:hover{
+            background: #f9f9f9
+        }
+        #description{
+            width:1000px;
+            height:500px;
+            overflow:hidden;
+            float:right;
+            margin:15px 0px 0px 20px;
+        }
+
+        /* 图标第一行 */
+        .thumbnailWrapper{width:1200px;margin:0px 0px 0px 26px;}
+        .thumbnailWrapper ul li{float:left;position:relative;overflow:hidden;margin:2px 30px 10px 65px;}
+        .thumbnailWrapper ul li a img{width:200px;position:relative;border:none; }
+        .caption{position:absolute;bottom:0px;left:0px;width:100%;display:none;background:#333;color:#FFF;opacity:0.9; font-weight:bolder; text-align:center}
+        .caption .captionInside{padding:10px;margin:0px;}
+
+        /*图标第三行*/
+        html,body,ul,li,ol,p,dl,dt,dd,h1,h2,h3,h4,h5,h6,input,form{margin:0px;padding:0px;}/*
+body{margin:0 auto;font-size:12px;font-family:"Arial";height:auto;}
+html{overflow-x:hidden;}
+div{margin:0px auto;}
+a{text-decoration:none;font-size:12px;cursor: pointer;color:#333;font-family:"Arial";}
+a:hover{color:#62a7a5;zoom:1;}
+img{border:none;vertical-align:top;}
+ul,li{list-style:none;background:none;}
+*html{background-image:url(about:blank);background-attachment:fixed;}/**解决ie6中的颤动效果*
+h1,h2,h3,h4,h5,h6,i,em{font:12px/17px Arial, Helvetica, sans-serif;font-style:normal;}
+div{margin:0 auto;}
+em{font-style:normal;}
+/* index_hd */
+        .index_hd{width:1180px;height:200px;overflow:hidden;margin:0px 0px 0px 90px;}
+        .index_hd .hd_l{width:590px;height:535px;overflow:hidden;}
+        .index_hd .hd_l ul li{position:relative}
+        .index_hd .hd_r ul li{float:left;width:294px;height:268px;overflow:hidden;border-left:1px #fff solid;position:relative}
+    </style>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-1.9.1.js'></script>
+
+    <script language="javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        //图片向右滚动
+        window.onload=function(){//图片切换
+            var ele=document.getElementById("description");//获得id为description的div
+            var w=ele.clientWidth;
+            var n=20,t=20;
+            var timers=new Array(n);
+            var c=document.getElementById("beni").getElementsByTagName("li");//得到beni下的li
+            for(var i=0;i<c.length;i++){
+                c[i].index=i;
+                c[i].onmouseover=doSlide;//鼠标经过滑动
+            }
+            c=null;
+            function doSlide(){
+                var x=ele.scrollLeft;//像左滚动
+                var d=this.index*w-x;//滑动一个单位
+                if(!d) return;
+                for(var i=0;i<n;i++)(function(){
+                    if(timers[i])
+                        clearTimeout(timers[i]);//取消由 setTimeout() 方法设置的 timeout
+                    var j=i;
+                    timers[i]=setTimeout(function(){
+                        ele.scrollLeft=x+Math.round(d*Math.sin(Math.PI*(j+1)/(2*n)));
+                    },(i+1)*t);
+                })();
+            }
+        }
+
+    </script>
+
+</head>
+<div>
+    <div id="header">
+        <div id="header_left"><img src="images/header_left.png" height="36" width="34"/></div>
+        <div id="header_ziti1">导航</div>
+        <div id="header_center">RACHEL PEACHEY & PAUL MOSIG</div>
+        <div id="header_ziti2">Elsewhere</div>
+        <div id="header_right"><img src="images/header_right.jpg" /></div>
+        <div id="nav">
+            <ul id="nav_ul">
+                <li><a href="Racket.html"><img src="images/+.jpg" />首页</a></li>
+                <li><a href="Design.html"><img src="images/+.jpg" />设计</a></li>
+                <li><a href="ART.html"><img src="images/+.jpg" />艺术</a></li>
+                <li><a href="#"><img src="images/+.jpg" />联系</a></li>
+                <li><a href="#"><img src="images/+.jpg" />项目查询</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="art_wrapper">
+        <!--
+        <div id="art_content_top">
+        <br /><br /><br />
+        <p style="color:#000; font-family:Verdana, Geneva, sans-serif; font-size:36px; text-align:center;">Design
+        </p>
+        <br /><br />
+        <p style="color:#444D4F; font-family:Verdana, Geneva, sans-serif; font-size:16px; text-align:center">Racket is a design studio based in the Blue Mountains, Australia. We specialise in unique and
+        <br /><br />
+        beautiful work for web & print. We work with clients across Australia and around the world.
+       </p>
+        </div>
+        -->
+        <!--图片切换-->
+        <div class="design_slider">
+        </div>
+        <div class="share_this_page">
+        </div>
+        <div class="clients_logo">
+        </div>
+        <div id=outer>
+            <div id=focus>
+                <ul id=beni>
+                    <li id="first"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                    <li id="second"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                    <li id="thirs"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                    <li id="forth"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                </ul>
+            </div>
+            <div id=description>
+                <img src="images/des.png" </div>
+        </div>
+    </div>
+</div>
+<!--中间过度-->
+<div>
+    <img src="images/ART_zhongjian.jpg" />
+</div>
+<!--图标第一行-->
+<div class='thumbnailWrapper'>
+    <ul>
+        <li>
+            <a href="#"><img src='images/11.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>CITY OF MELBOURNE</p>
+            </div>
+        </li>
+        <li>
+            <a href="#"><img src='images/12.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>CITY OF SYSONEY</p>
+            </div>
+        </li>
+        <li>
+            <a href="#"><img src='images/13.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>HARDIE GRANT BOOKS</p>
+            </div>
+        </li>
+        <li>
+            <a href="#"><img src='images/14.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>ABC</p>
+            </div>
+        </li>
+        <li>
+            <a href="#"><img src='images/21.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>KOSKELA</p>
+            </div>
+        </li>
+        <li>
+            <a href="#"><img src='images/22.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>SOCIAL ENTERPRISE AWARDS</p>
+            </div>
+        </li>
+        <li>
+            <a href="#"><img src='images/23.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>MURDOCH BOOKS</p>
+            </div>
+        </li>
+        <li>
+            <a href="#"><img src='images/24.png' /></a>
+            <div class='caption'>
+                <p class='captionInside'>WIKINSON'S</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--图标第三行-->
+<div class="index_hd">
+    <div class="fr hd_r major-list-outer">
+        <ul class="major-list">
+            <li class="major-item">
+                <a href="#">
+					<span class="txt-hide front-face">
+						<img src="images/31.png">
+					</span>
+                    <span class="back-face to-left"></span>
+                </a>
+            </li>
+            <li class="major-item">
+                <a href="#">
+					<span class="txt-hide front-face">
+						<img src="images/32.png">
+					</span>
+                    <span class="back-face to-right"></span>
+                </a>
+            </li>
+            <li class="major-item">
+                <a href="#">
+					<span class="txt-hide front-face">
+						<img src="images/33.png">
+					</span>
+                    <span class="back-face to-top"></span>
+                </a>
+            </li>
+            <li class="major-item">
+                <a href="#">
+					<span class="txt-hide front-face">
+						<img src="images/34.png">
+					</span>
+                    <span class="back-face to-top"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/public.js"></script><!--引用public.js-->
+<script type="text/javascript" src="js/main.js"></script><!--引用mainc.js-->
+<div id="bottom"><img src="images/bottom.png" /></div>
+</div>
+</body>
+</html>
